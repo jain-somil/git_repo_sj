@@ -3,12 +3,12 @@ package parking_lot.model;
 public class ParkingSlot {
 	
 	String registrationNumber;
-	String color;
+	String colour;
 	
-	public ParkingSlot(String registrationNumber, String color) {
+	public ParkingSlot(String registrationNumber, String colour) {
 		super();
 		this.registrationNumber = registrationNumber;
-		this.color = color;
+		this.colour = colour;
 	}
 	public String getRegistrationNumber() {
 		return registrationNumber;
@@ -16,16 +16,16 @@ public class ParkingSlot {
 	public void setRegistrationNumber(String registrationNumber) {
 		this.registrationNumber = registrationNumber;
 	}
-	public String getColor() {
-		return color;
+	public String getColour() {
+		return colour;
 	}
-	public void setColor(String color) {
-		this.color = color;
+	public void setColour(String colour) {
+		this.colour = colour;
 	}
 	
 	@Override
 	public String toString() {
-		return "ParkingSlot [registrationNumber=" + registrationNumber + ", color=" + color + "]";
+		return "ParkingSlot [registrationNumber=" + registrationNumber + ", colour=" + colour + "]";
 	}
 	
 
