@@ -25,7 +25,7 @@ public class ParkingSlot {
 	
 	@Override
 	public String toString() {
-		return "ParkingSlot [registrationNumber=" + registrationNumber + ", colour=" + colour + "]";
+		return "\t" + registrationNumber + "\t" + colour;
 	}
 	
 
