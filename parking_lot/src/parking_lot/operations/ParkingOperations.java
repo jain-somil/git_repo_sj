@@ -18,16 +18,15 @@ public class ParkingOperations {
 		result[0] = slotsArray;
 		result[1] = slotsMap;
 		
-		System.out.printf("Created a parking lot with %s slots", numSlots);
+		System.out.printf("Created a parking lot with %s slots\n", numSlots);
 		return result;
 	}
 	
 	public static Object[] parkCar(Object[] parkingLot, String registrationNumber, String colour) {
-		ParkingSlot[] slotsArray = (ParkingSlot[])parkingLot[0];
-		if(slotsArray == null) {
+		if(parkingLot == null) {
 			parkingLot = createParkingSlots("50");
-			slotsArray = (ParkingSlot[])parkingLot[0];
 		}
+		ParkingSlot[] slotsArray = (ParkingSlot[])parkingLot[0];
 		@SuppressWarnings("unchecked")
 		HashMap<String, Integer> slotsMap = (HashMap<String, Integer>)parkingLot[1];
 		boolean carParked = false;
@@ -35,12 +34,13 @@ public class ParkingOperations {
 			if(slotsArray[i] == null) {
 				slotsArray[i] = new ParkingSlot(registrationNumber, colour);
 				slotsMap.put(registrationNumber, (i+1));
-				System.out.printf("Allocated slot number: %d", (i+1));
+				System.out.printf("Allocated slot number: %d\n", (i+1));
 				carParked = true;
+				break;
 			}
 		}
 		if(!carParked)
-			System.out.printf("Sorry, parking lot is full");
+			System.out.println("Sorry, parking lot is full");
 		
 		parkingLot[0] = slotsArray;
 		parkingLot[1] = slotsMap;
@@ -50,11 +50,10 @@ public class ParkingOperations {
 	
 	public static Object[] leaveCar(Object[] parkingLot, String slotNumber) {
 		int parkingSlot = Integer.parseInt(slotNumber) - 1;
-		ParkingSlot[] slotsArray = (ParkingSlot[])parkingLot[0];
-		if(slotsArray == null) {
+		if(parkingLot == null) {
 			parkingLot = createParkingSlots("50");
-			slotsArray = (ParkingSlot[])parkingLot[0];
 		}
+		ParkingSlot[] slotsArray = (ParkingSlot[])parkingLot[0];
 		@SuppressWarnings("unchecked")
 		HashMap<String, Integer> slotsMap = (HashMap<String, Integer>)parkingLot[1];
 		
@@ -62,13 +61,13 @@ public class ParkingOperations {
 			if(slotsArray[parkingSlot].getRegistrationNumber() != null) {
 				slotsMap.remove(slotsArray[parkingSlot].getRegistrationNumber());
 				slotsArray[parkingSlot] = null;
-				System.out.printf("Slot number %s is free", slotNumber);
+				System.out.printf("Slot number %s is free\n", slotNumber);
 			}else {
-				System.out.printf("Slot number %s is free", slotNumber);
+				System.out.printf("Slot number %s is free\n", slotNumber);
 			}
 			
 		}else {
-			System.out.printf("Sorry, invalid parking lot number. Allowed max value is %d", slotsArray.length);
+			System.out.printf("Sorry, invalid parking lot number. Maximum value allowed is %d\n", slotsArray.length);
 		}
 		
 		parkingLot[0] = slotsArray;
